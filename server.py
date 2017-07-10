@@ -8,10 +8,7 @@ from uvitools.broadcast import BroadcastMiddleware
 async def channel_publish(message,channels):
 
     channel = message['args'].get('channel')
-
     body = await channels['body'].receive()
-
-    print(body)
 
     if not channel is None:
         await channels['groups'].send({
@@ -30,11 +27,7 @@ async def channel_publish(message,channels):
 
 
 
-async def  channel_connect(message,channels):
-
-    print('channel_connect')
-    print('channels ', channels)
-    print('app clients', app.clients)
+async def channel_connect(message,channels):
 
     channel = message['args'].get('channel')
 
@@ -47,10 +40,6 @@ async def  channel_connect(message,channels):
 
 async def  channel_disconnect(message,channels):
 
-    print('channel_disconnect')
-    print('channles ', channels)
-    print('app clients', app.clients)
-
     channel = message['args'].get('channel')
 
     if not channel is None:
@@ -61,11 +50,6 @@ async def  channel_disconnect(message,channels):
 
 
 async def  channel_receive(message,channels):
-
-    print('channel_receive')
-    print('channels ', channles)
-    print('app clients ', app.clients)
-    print('message ', message)
 
     # todo
     # maybe wo need proxy this to http server
@@ -87,7 +71,6 @@ app = ChannelSwitch({
                 name='websocket'
                 )
             ])
-
     })
 
 
