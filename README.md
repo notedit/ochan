@@ -16,6 +16,13 @@ pip install uvitools
 ```
 
 
+### run 
+
+```
+uvicorn -w 4  server:app    # run  4 workor 
+
+```
+
 
 ### feature
 
