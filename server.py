@@ -32,10 +32,12 @@ async def channel_connect(message,channels):
     channel = message['args'].get('channel')
 
     if not channel is None:
-        await channels['groups'].send({
-            'group': channel,
-            'add': channels['reply'].name
-        })
+        chans = channel.split(',')
+        for chan in chans:
+            await channels['groups'].send({
+                'group': chan,
+                'add': channels['reply'].name
+            })
 
 
 async def  channel_disconnect(message,channels):
@@ -43,20 +45,23 @@ async def  channel_disconnect(message,channels):
     channel = message['args'].get('channel')
 
     if not channel is None:
-        await channels['groups'].send({
-            'group': channel,
-            'discard': channels['reply'].name
-            })
+        chans = channel.split(',')
+        for chan in chans:
+            await channels['groups'].send({
+                'group': chan,
+                'discard': channels['reply'].name
+                })
 
 
 async def  channel_receive(message,channels):
 
+    pass
     # todo
     # maybe wo need proxy this to http server
 
 
 app = ChannelSwitch({
-    'http.*':
+    'http.request':
         Router([
             Route('/publish/<channel>', channel_publish, methods=['POST']),
         ]),

@@ -7,6 +7,7 @@ a websocket framework use uvicorn
 ### install
 
 ```
+
 pip install uvicorn
 pip install uvitools
 
@@ -16,6 +17,7 @@ pip install uvitools
 
 ```
 uvicorn -w 4  server:app    # run  4 workor 
+
 ```
 
 
@@ -24,11 +26,10 @@ uvicorn -w 4  server:app    # run  4 workor
 - multi process
 - scale well throught redis
 - http publish
-
+- support subscribe multi channel
 
 ### todo
 
-- support subscribe multi channel 
 - add config
 
 
